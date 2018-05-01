@@ -35,7 +35,7 @@ The musk variable now contains a set of 35 links that fit the serachterm "Elon M
 
 You can do more advanced searches by filtering your search-request:
 
-##### Number of Images
+#### Number of Images
 Only returns the first X images from the search result.
 
 ```python
@@ -44,7 +44,7 @@ musk = BingImages("Elon Musk", count=5).get()
 
 Possible attributes: **Any number you'd like**.
 
-##### Image Color
+#### Image Color
 Only returns images whose primary color is the specified color. 
 
 ```python
@@ -53,7 +53,7 @@ musk = BingImages("Elon Musk", color="red").get()
 
 Possible attributes: **yellow, orange, green, red, teal, black, white, grey, blue, purple, pink, brown, gray**.
 
-##### Image Size
+#### Image Size
 Only returns images of a certain Size
 
 ```python
@@ -62,7 +62,7 @@ musk = BingImages("Elon Musk", size="small").get()
 
 Possible attributes: **small, medium, large, wallpaper**.
 
-##### Image Type
+#### Image Type
 Only returns images of a certain Type
 
 ```python
@@ -71,7 +71,7 @@ musk = BingImages("Elon Musk", type="photo").get()
 
 Possible attributes: **photo, clipart, linedrawing, animatedgif, transparent**.
 
-##### Image Layout
+#### Image Layout
 Only returns images of a certain Layout
 
 ```python
@@ -80,7 +80,7 @@ musk = BingImages("Elon Musk", layout="square").get()
 
 Possible attributes: **square, wide, tall**.
 
-##### Image Person
+#### Image Person
 Only returns images of a certain Layout
 
 ```python
@@ -89,7 +89,7 @@ musk = BingImages("Elon Musk", person="portrait").get()
 
 Possible attributes: **face, portrait**.
 
-##### Image Age
+#### Image Age
 Only returns images that were taken during in the specified timeperiod.
 
 ```python
@@ -98,7 +98,7 @@ musk = BingImages("Elon Musk", age="day").get()
 
 Possible attributes: **day, week, month, year**.
 
-##### Image License
+#### Image License
 Only returns images that fall under the specified license.
 
 ```python
