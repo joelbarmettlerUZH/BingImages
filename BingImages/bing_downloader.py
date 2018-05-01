@@ -46,7 +46,7 @@ class BingImages():
         if licensetype in licenseDict.keys():
             filters += "+filterui:license"+licenseDict[licensetype]
 
-        url = "https://www.bing.com/images/async?q=elon+musk&first=0&count=" + str(self.__count) + "&relp=" + str(self.__count) + "&qft=" + filters + "&lostate=c&mmasync=1&dgState=c*5_y*1640s1812s1758s1694s1705_i*36_w*186&IG=EABACC36F4F145FE94A4536B89DE0E49&SFX=2&iid=images.5662"
+        url = "https://www.bing.com/images/async?q=" + self.__topic +"&first=0&count=" + str(self.__count) + "&relp=" + str(self.__count) + "&qft=" + filters + "&lostate=c&mmasync=1&dgState=c*5_y*1640s1812s1758s1694s1705_i*36_w*186&IG=EABACC36F4F145FE94A4536B89DE0E49&SFX=2&iid=images.5662"
         return url
 
     def get(self):
@@ -81,5 +81,5 @@ class BingImages():
                 pass
 
 if __name__ == "__main__":
-    musk = BingImages("Elon Musk", count=5).get()
+    musk = BingImages("Vitalik buterin", count=5).get()
     print(musk)
