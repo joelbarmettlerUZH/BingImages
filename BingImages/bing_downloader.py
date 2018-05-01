@@ -68,14 +68,17 @@ class BingImages():
         if not os.path.exists(folder):
             os.makedirs(folder)
         for link in urls:
-            link = link.replace("\\","/")
-            imgName = link[len(link) - 1 - link[::-1].index("/"):]
-            if "?" in imgName:
-                imgName = imgName[:len(imgName) - 1 - imgName[::-1].index("?")]
-            r = requests.get(link, stream=True)
-            with open(folder + "/" + imgName, 'wb') as f:
-                for chunk in r.iter_content():
-                    f.write(chunk)
+            try:
+                link = link.replace("\\","/")
+                imgName = link[len(link) - 1 - link[::-1].index("/"):]
+                if "?" in imgName:
+                    imgName = imgName[:len(imgName) - 1 - imgName[::-1].index("?")]
+                r = requests.get(link, stream=True)
+                with open(folder + "/" + imgName, 'wb') as f:
+                    for chunk in r.iter_content():
+                        f.write(chunk)
+            except Exception:
+                pass
 
 if __name__ == "__main__":
     musk = BingImages("Elon Musk", count=5).get()
