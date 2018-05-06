@@ -69,34 +69,22 @@ class BingImages():
         if not os.path.exists(folder):
             os.makedirs(folder)
 
-        downloaded = len(urls)
-
-        def downloadImage(url, path):
-            try:
-                r = requests.get(url, stream=True)
-                with open(path, 'wb') as f:
-                    for chunk in r.iter_content():
-                        f.write(chunk)
-                nonlocal downloaded
-            except Exception:
-                print("WARNING: BingImages Resource could not be downloaded. URL: {}".format(url))
-            downloaded -= 1
-
         for link in urls:
             try:
                 link = link.replace("\\","/")
                 imgName = link[len(link) - 1 - link[::-1].index("/"):]
                 if "?" in imgName:
                     imgName = imgName[:len(imgName) - 1 - imgName[::-1].index("?")]
-                threading._start_new_thread(downloadImage, (link, folder + "/" + imgName))
+                r = requests.get(link, stream=True)
+                with open(folder + "/" + imgName, 'wb') as f:
+                    for chunk in r.iter_content():
+                        f.write(chunk)
             except Exception as e:
-                pass
+                print("WARNING: BingImages Resource could not be downloaded. URL: {}".format(link))
 
-        while downloaded > 0:
-            pass
 
 
 
 if __name__ == "__main__":
-    musk = BingImages("Elon Musk", count=40).get()
+    musk = BingImages("Elon Musk", count=20).get()
     BingImages.download(musk, "./tmp")
