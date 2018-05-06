@@ -2,6 +2,7 @@ import bs4
 import requests
 import re
 import os
+import threading
 
 class BingImages():
     def __init__(self, topic, count=35, size=None, color=None, type=None, layout=None, person=None, age=None, licensetype=None):
@@ -67,19 +68,32 @@ class BingImages():
     def download(urls, folder="."):
         if not os.path.exists(folder):
             os.makedirs(folder)
+
+        downloaded = len(urls)
+
+        def downloadImage(url, path):
+            r = requests.get(url, stream=True)
+            with open(path, 'wb') as f:
+                for chunk in r.iter_content():
+                    f.write(chunk)
+            nonlocal downloaded
+            downloaded -= 1
+
         for link in urls:
             try:
                 link = link.replace("\\","/")
                 imgName = link[len(link) - 1 - link[::-1].index("/"):]
                 if "?" in imgName:
                     imgName = imgName[:len(imgName) - 1 - imgName[::-1].index("?")]
-                r = requests.get(link, stream=True)
-                with open(folder + "/" + imgName, 'wb') as f:
-                    for chunk in r.iter_content():
-                        f.write(chunk)
-            except Exception:
+                threading._start_new_thread(downloadImage, (link, folder + "/" + imgName))
+            except Exception as e:
                 pass
 
+        while downloaded > 0:
+            pass
+
+
+
 if __name__ == "__main__":
-    musk = BingImages("Vitalik buterin", count=5).get()
-    print(musk)
+    musk = BingImages("Elon Musk", count=40).get()
+    BingImages.download(musk, "./tmp")

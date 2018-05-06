@@ -2,13 +2,13 @@ from distutils.core import setup
 setup(
   name = 'BingImages',         # How you named your package folder (MyLib)
   packages = ['BingImages'],   # Chose the same as "name"
-  version = '0.3',      # Start with a small number and increase it with every change you make
+  version = '0.4',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Use the bing image search engine to get image-links for your topics',   # Give a short description about your library
   author = 'Joel Barmettler',                   # Type in your name
   author_email = 'joel.barmettler@uzh.ch',      # Type in your E-Mail
   url = 'https://github.com/joelbarmettlerUZH/BingImages',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/joelbarmettlerUZH/BingImages/archive/v_03.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/joelbarmettlerUZH/BingImages/archive/v_04.tar.gz',    # I explain this later on
   keywords = ['Bing', 'Images', 'Search', 'engine', 'download', 'scraping'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'requests',
