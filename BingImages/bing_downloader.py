@@ -72,11 +72,14 @@ class BingImages():
         downloaded = len(urls)
 
         def downloadImage(url, path):
-            r = requests.get(url, stream=True)
-            with open(path, 'wb') as f:
-                for chunk in r.iter_content():
-                    f.write(chunk)
-            nonlocal downloaded
+            try:
+                r = requests.get(url, stream=True)
+                with open(path, 'wb') as f:
+                    for chunk in r.iter_content():
+                        f.write(chunk)
+                nonlocal downloaded
+            except Exception:
+                print("WARNING: BingImages Resource could not be downloaded. URL: {}".format(url))
             downloaded -= 1
 
         for link in urls:
